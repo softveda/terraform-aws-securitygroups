@@ -13,7 +13,7 @@ module "web_server_sg" {
   source  = "terraform-aws-modules/security-group/aws//modules/http-80"
   version = "4.11.0"
 
-  create = false
+  create = true
 
   name        = "web-server"
   description = "Security group for web-server with HTTP ports open within VPC"
@@ -27,7 +27,7 @@ module "appid_sg" {
   source  = "terraform-aws-modules/security-group/aws//modules/http-80"
   version = "4.11.0"
 
-  create = true
+  create = false
 
   for_each            = local.security_group_resources
   name                = each.key
